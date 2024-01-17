@@ -35,7 +35,18 @@ s init start-application-v3 -d  nodejs_hello_world
 
 - 在 publish.yaml 所在的目录上执行 `s cli alireadme3` 完成应用 readme 的编写
 
-  > readme_en.md 可以可删除不考虑
+  > - readme_en.md 可以可删除不考虑
+  > - 如果您的应用部署完毕后， 有固定 event 测试 case, 也可以在 readme 采用如下方式添加测试用例，文档那边有能力取到这个 test case, 比如:
+
+  ````plaintext
+    <div name="test-case" hidden>
+    ```plaintext
+    {
+        "key": "value"
+    }
+    ```
+    </div>
+  ````
 
 - 首次发布需要通过 [registry](https://docs.serverless-devs.com/serverless-devs/command/registry) 命令先登录 Serverless Devs Registry。
 
