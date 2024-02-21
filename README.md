@@ -12,7 +12,7 @@
 s init start-application-v3 -d  nodejs_hello_world
 ```
 
-执行成功后会生成 nodejs_hello_world 目录
+执行成功后会生成 nodejs_hello_world 目录。
 
 ## 2. 进入 nodejs_hello_world 目录进行组件开发
 
