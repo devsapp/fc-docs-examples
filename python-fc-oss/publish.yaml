@@ -1,0 +1,74 @@
+Edition: 3.0.0
+Type: Project
+Name: fc-mount-oss
+Version: dev
+Provider:
+  - 阿里云 # 取值内容参考：https://api.devsapp.cn/v3/common/args.html
+Description: Serverless Devs 应用开发模板
+HomePage: https://www.serverless-devs.com
+Tags: #标签详情
+  - 模板
+  - Serverless Devs
+Category: 新手入门 # 取值内容参考：https://api.devsapp.cn/v3/common/args.html
+Service: # 使用的服务
+  函数计算:
+    Authorities:
+      - AliyunFCFullAccess
+  对象存储:
+    Authorities:
+      - AliyunOSSFullAccess
+Organization: 阿里云函数计算（FC） # 所属组织
+Effective: Public # 是否公开，取值：Public，Private，Organization
+Parameters:
+  type: object
+  additionalProperties: false # 不允许增加其他属性
+  required: # 必填项
+    - region
+    - functionName
+    - bucketName
+    - endpoint
+    - mountDir
+  properties:
+    region:
+      title: 地域
+      type: string
+      default: cn-hangzhou
+      description: 创建应用所在的地区
+      enum:
+        - cn-beijing
+        - cn-hangzhou
+        - cn-shanghai
+    functionName:
+      title: 函数名
+      type: string
+      default: fc-mount-oss-${default-suffix}
+      pattern: "^[a-zA-Z_][a-zA-Z0-9-_]{0,127}$"
+      description: 应用的函数名称, 只能包含字母、数字、下划线和中划线。不能以数字、中划线开头。长度在 1-128 之间
+    bucketName:
+      title: OSS Bucket
+      type: string
+      default: ""
+      description: OSS存储桶名(注意和函数同地域)
+      x-bucket:
+        dependency:
+          - region
+    bucketPath:
+      title: OSS Bucket子目录
+      type: string
+      default: ""
+      description: 您可以挂载Bucket的某个子目录，例如/folderA/folderB。留空或者/代表挂载Bucket的根目录
+    endpoint:
+      title: OSS访问地址
+      type: string
+      default: ""
+      description: OSS访问地址，例如杭州Region配置为http://oss-cn-hangzhou-internal.aliyuncs.com
+    mountDir:
+      title: 函数本地目录
+      type: string
+      default: ""
+      description: 函数实例中的本地目录。仅支持/home/、/mnt/ 或 /data/ 等目录的子目录，例如 /home/app
+    readOnly:
+      title: 函数本地目录权限
+      type: boolean
+      default: false
+      description: 函数实例中本地目录的访问权限，true为只读权限，false为读写权限

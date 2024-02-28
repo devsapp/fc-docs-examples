@@ -10,7 +10,7 @@
 #   有问题快来钉钉群问一下吧：33947367
 # ------------------------------------
 edition: 3.0.0
-name: fc_mount_oss
+name: fc-mount-oss
 # access 是当前应用所需要的密钥信息配置：
 # 密钥配置可以参考：https://www.serverless-devs.com/serverless-devs/command/config
 # 密钥使用顺序可以参考：https://www.serverless-devs.com/serverless-devs/tool#密钥使用顺序与规范
@@ -35,14 +35,14 @@ resources:
       handler: index.handler
       memorySize: 128
       timeout: 30
-      role: '{{ roleArn }}'
+      #role: '{{ role }}'
       ossMountConfig:
         mountPoints:
           - bucketName: '{{ bucketName }}'
             bucketPath: '{{ bucketPath }}'
             endpoint: '{{ endpoint }}'
             mountDir: '{{ mountDir }}'
-            readOnly: false
+            readOnly: {{ readOnly }}
 
   # next_function: # 第二个函数的案例，仅供参考
   #  # 如果在当前项目下执行 s deploy，会同时部署模块
