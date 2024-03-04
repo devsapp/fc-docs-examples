@@ -33,6 +33,7 @@ Parameters:
     - vswitchId
     - securityGroupId
     - mountDir
+    - remoteDir
   properties:
     region:
       title: 地域
@@ -72,6 +73,11 @@ Parameters:
       type: string
       default: ""
       description: 登录 <a href="https://ecs.console.aliyun.com/#/securityGroup/region/cn-hangzhou" target="_blank">安全组</a> 查看, 通常默认创建的空安全组即可(注意和上面地域相同), 例如 sg-bp1cd2w08t3dy7nhrvtx
+    remoteDir:
+      title: 远端目录
+      type: string
+      default: ""
+      description: 通用型NAS以/开头，极速型NAS必须以/share开头。若您配置的目录在远端NAS中不存在，函数计算会为您自动创建该目录。目录所有者为上述配置的用户和用户组，权限为777。
     mountDir:
       title: 函数本地目录
       type: string
